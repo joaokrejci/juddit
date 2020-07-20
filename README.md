@@ -7,11 +7,11 @@
 - Respostas podem respondidas (replicas)
 
 ## Página
-	- Descrição
-	- Perguntas
+- Descrição
+- Perguntas
 
 ## Votação (Perguntas e Respostas)
-	- up e down
+- up e down
 
 ## Enquete (Pode ser pergunta ou resposta)
 
