@@ -1,0 +1,5 @@
+#id,usuario,texto,votacao,respostas
+0,1,Faz de forma iterativa,1,1
+1,0,Da pra fazer de outro jeito,2,
+2,2,Faça de forma recursiva,3,
+3,3,Não sei,4,0

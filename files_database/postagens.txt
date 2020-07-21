@@ -1,0 +1,2 @@
+#id,usuario,titulo,texto,votacao,respostas
+0,0,Como faço uma função para calculo de fatorial em Java,preciso saber...,0,0:2:3
