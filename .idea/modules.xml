@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/juddit.iml" filepath="$PROJECT_DIR$/juddit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Juddit.iml" filepath="$PROJECT_DIR$/Juddit.iml" />
     </modules>
   </component>
 </project>
