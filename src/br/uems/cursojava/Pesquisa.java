@@ -14,4 +14,31 @@ public class Pesquisa {
         return keyWord;
     }
 
+    
 }
+
+/ALESSANDRA/
+    
+    
+    
+String busca = ""
+
+            int cout = 0;
+            for (Pergunta p : perguntas) {
+                if (p.getTitulo().contains(busca)) {
+                    cout++;
+                }
+            }
+            for (Pergunta p : perguntas) {
+                if (p.getTexto().contains(busca)) {
+                    cout++;
+                }
+            }
+
+            for (Pergunta p : perguntas) {
+                if (p.getRespostas().contains(busca)) {
+                    cout++;
+                }
+            }
+            System.out.println(cout + "resultados encontrados");
+        }
