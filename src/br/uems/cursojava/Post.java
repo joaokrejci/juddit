@@ -1,5 +1,6 @@
 package br.uems.cursojava;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -8,23 +9,23 @@ public abstract class Post {
     Este atributo foi removido pois os comentarios n vao ter titulos, só as perguntas. Implementar depois.
     private String titulo;
     */
-    private String texto;
+    protected String texto;
     private final String IDusuario;
     private final String data;
-    private ArrayList<String> respostas;
+    protected ArrayList<String> respostas;
     private TreeSet<String> IdUsuarios; //Pra depois
     private int votos = 0;
 
-    public Post(String texto, Usuario usuario, String data){
+    public Post(String texto, Usuario usuario){
         this.texto = texto;
         this.IDusuario = usuario.getID();
-        this.data = data;
+        this.data = java.time.LocalDate.now().toString();
 
         // Pegar usuarios que ja votaram do banco de dados e dar eles para o tree set IdUsuarios depois
     }
 
-    public abstract String getRespostas();
-    public abstract String novaResposta();
+    public abstract ArrayList<String> getRespostas();
+    public abstract void novaResposta(String resposta);
     public abstract void editaTexto(String novoTexto);
 
     public void voto(boolean voto, Usuario usuario){
