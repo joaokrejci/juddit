@@ -2,12 +2,12 @@ package br.uems.cursojava;
 
 import java.util.ArrayList;
 
-public class Pergunta extends Post {
+public class Pergunta implements Post {
     String titulo;
 
     public Pergunta(String texto, Usuario usuario) {
-        this.texto = texto;
-        this.usuario = usuario;
+        postagem.texto = texto;
+        postagem.usuario = usuario;
     }
 
     //revisar depois
@@ -20,17 +20,17 @@ public class Pergunta extends Post {
 
     @Override
     public void vote(boolean vote) {
-        this.votacao.votar(vote, usuario);
+        this.votacao.votar(vote, postagem.usuario);
     }
 
     @Override
     public void novaResposta(Resposta resposta) {
-        super.respostas.add(resposta);
+        postagem.respostas.add(resposta);
     }
 
     @Override
     public void editaTexto(String novoTexto) {
-        super.texto = novoTexto;
+        postagem.texto = novoTexto;
     }
 
 }

@@ -1,19 +1,18 @@
 package br.uems.cursojava;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
-public abstract class Post {
+
+public interface Post {
     /*
     Este atributo foi removido pois os comentarios n vao ter titulos, só as perguntas. Implementar depois.
     private String titulo;
     */
-    String texto;
-    String data;
-    ArrayList<Resposta> respostas;
-    int votos;
-    Usuario usuario;
-    Votacao votacao;
+    String data = LocalDate.now().toString();
+    Votacao votacao = new Votacao();
+    Postagem postagem = new Postagem();
 
     public abstract void vote(boolean vote);
     public abstract void novaResposta(Resposta resposta);
