@@ -1,6 +1,5 @@
 package br.uems.cursojava;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -10,26 +9,34 @@ public abstract class Post {
     private String titulo;
     */
     protected String texto;
-    private final String IDusuario;
+    private final long iDusuario;
     private final String data;
-    protected ArrayList<String> respostas;
-    private TreeSet<String> IdUsuarios; //Pra depois
+    protected ArrayList<Resposta> respostas;
+    private TreeSet<Long> IdUsuarios; //Pra depois
     private int votos = 0;
 
     public Post(String texto, Usuario usuario){
         this.texto = texto;
-        this.IDusuario = usuario.getID();
+        this.iDusuario = usuario.getID();
         this.data = java.time.LocalDate.now().toString();
 
         // Pegar usuarios que ja votaram do banco de dados e dar eles para o tree set IdUsuarios depois
     }
 
-    public abstract ArrayList<String> getRespostas();
-    public abstract void novaResposta(String resposta);
+    //usuario,texto,votacao
+    protected Post(Usuario user, String texto, int votos) {
+        this.iDusuario = user.getID();
+        this.texto = texto;
+        this.votos = votos;
+        this.data = java.time.LocalDate.now().toString();
+    }
+
+    public abstract ArrayList<Resposta> getRespostas();
+    public abstract void novaResposta(Resposta resposta);
     public abstract void editaTexto(String novoTexto);
 
     public void voto(boolean voto, Usuario usuario){
-        for(String ID: IdUsuarios) {
+        for(Long ID: IdUsuarios) {
             if(ID == usuario.getID()) return; //se ja tiver votado, ele sai da funcao.
         }
 

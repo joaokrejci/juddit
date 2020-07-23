@@ -1,7 +1,7 @@
 package br.uems.cursojava;
 
 public class Usuario {
-    private String ID;
+    private final long ID;
     private String nome;
     private static int contador = 0;
 
@@ -10,10 +10,28 @@ public class Usuario {
         this.nome = nome;
 
         contador++;
-        ID = String.valueOf(contador);
+        ID = contador;
     }
 
-    public String getID() {
+    public Usuario(String nome, long id) {
+        this.nome = nome;
+
+        /*
+        Precisa de verificacao de um banco de dados para ver se ja existe algum usuario com este ID. Caso exista,
+        chama o primeiro construtor. IMPLEMENTAR DEPOIS!
+         */
+        this.ID = id;
+    }
+
+    public long getID() {
         return this.ID;
+    }
+
+    public void mudaNome(String novoNome) {
+        this.nome = novoNome;
+    }
+
+    public String getNome() {
+        return this.nome;
     }
 }
