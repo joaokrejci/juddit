@@ -1,42 +1,46 @@
 package br.uems.cursojava;
 
-public abstract class Resposta (String[] args){
-    Resposta(int ID, String Usuario, String texto, String votacao, String resposta) {
-        this.ID = ID;
-        this.Usuario = Usuario;
+import java.util.ArrayList;
+
+import static br.uems.cursojava.Main.usuarios;
+import static br.uems.cursojava.Main.votacoes;
+
+public class Resposta extends Post{
+    Resposta(Usuario usuario, String texto,Votacao votacao, ArrayList<Resposta> respostas) {
+        this.usuario = usuario;
         this.texto = texto;
-        this.votacao = votacao;
-        this.resposta  = resposta;
-
     }
-    Resposta(String resposta){
-        Resposta resp = Resposta.parseResposta(resposta);
-        this.ID = resp.ID;
-        this.Usuario = resp.Usuario;
-        this.texto = resp.texto;
-        this.votacao = resp.votacao;
-        this.resposta = resp.resposta;
-    }
-
-
 
     public static Resposta parseResposta(String resposta) {
         String[] informacoes = resposta.split(",");
+        ArrayList<Resposta> resps = new ArrayList<>();
+
+        String[] resp_info = informacoes[4].split(":");
+        for(String r : resp_info){
+            resps.add(Main.respostas.get(Integer.parseInt(r)));
+        }
+
         return new Resposta(
-                informacoes[0],
-                Integer.parseInt(informacoes[1]),
-                Integer.parseInt(informacoes[2]),
-                Integer.parseInt(informacoes[3]),
-                Integer.parseInt(informacoes[4])
+                usuarios.get(Integer.parseInt(informacoes[1])),
+                informacoes[2],
+                votacoes.get(Integer.parseInt(informacoes[3])),
+                resps
         );
     }
-    int ID;
-    String Usuario;
-    String texto;
-    String votacao;
-    String resposta;
 
-    String str = "345";
-    int i = Integer.parseInt(str);
+    @Override
+    public void vote(boolean vote) {
+        votacao.votar(vote, usuario);
+    }
 
+    @Override
+    public void novaResposta(Resposta resposta) {
+        Main.respostas.add(resposta);
+        this.respostas.add(resposta);
+    }
+
+    @Override
+    public void editaTexto(String novoTexto) {
+        this.texto = novoTexto;
+    }
 }

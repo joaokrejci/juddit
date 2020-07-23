@@ -6,23 +6,25 @@ public class Pergunta extends Post {
     String titulo;
 
     public Pergunta(String texto, Usuario usuario) {
-        super(texto, usuario);
+        this.texto = texto;
+        this.usuario = usuario;
     }
 
     //revisar depois
     public static Pergunta parsePergunta(String pergunta) {
-        String[] info =  pergunta.split(", ", 2);
+        String[] info =  pergunta.split(",");
+
 
         return new Pergunta(info[0], new Usuario(info[0]));
     }
 
     @Override
-    public ArrayList<String> getRespostas() {
-        return super.respostas;
+    public void vote(boolean vote) {
+        this.votacao.votar(vote, usuario);
     }
 
     @Override
-    public void novaResposta(String resposta) {
+    public void novaResposta(Resposta resposta) {
         super.respostas.add(resposta);
     }
 
