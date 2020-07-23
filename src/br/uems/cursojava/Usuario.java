@@ -3,7 +3,7 @@ package br.uems.cursojava;
 public class Usuario {
     private final long ID;
     private String nome;
-    private static int contador = 0;
+    private static long contador = 0;
 
     //cada usuario tem ID diferente para poder ser detectado pelo codigo e poderem ter nomes iguais
     public Usuario(String nome) {
@@ -18,7 +18,7 @@ public class Usuario {
 
         /*
         Precisa de verificacao de um banco de dados para ver se ja existe algum usuario com este ID. Caso exista,
-        chama o primeiro construtor. IMPLEMENTAR DEPOIS!
+        joga excecao. IMPLEMENTAR DEPOIS!
          */
         this.ID = id;
     }

@@ -11,8 +11,10 @@ public class Pergunta implements Post {
         this.postagem.texto = texto;
         this.postagem.usuario = usuario;
         this.titulo = titulo;
+        this.postagem.votacao = new Votacao();
     }
 
+    //usado apena no parsePergunta
     private Pergunta(Usuario user, String texto, int votos, String titulo) {
         this.postagem.usuario = user;
         this.postagem.texto = texto;
@@ -21,21 +23,17 @@ public class Pergunta implements Post {
         this.titulo = titulo;
     }
 
-    //revisar depois
+    //id,usuario,titulo,texto,votacao,respostas
     public static Pergunta parsePergunta(String pergunta) {
-        //id,usuario,titulo,texto,votacao,respostas
         String[] info = pergunta.split(",");
 
-        //nome, ID
         Usuario usuario = new Usuario(info[1], Long.parseLong(info[0]));
 
-        //usuario, texto, votos, titulo
         Pergunta novaPergunta = new Pergunta(usuario, info[3], Integer.parseInt(info[4]), info[2]);
 
         String[] respostas = info[5].split(":");
 
         for(String resposta : respostas) {
-            //respostas
             novaPergunta.novaResposta(Resposta.parseResposta(resposta));
         }
 

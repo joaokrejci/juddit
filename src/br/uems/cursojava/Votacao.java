@@ -1,6 +1,5 @@
 package br.uems.cursojava;
 
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class Votacao {

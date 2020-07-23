@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import static br.uems.cursojava.Main.usuarios;
 import static br.uems.cursojava.Main.votacoes;
 
-public class Resposta extends Post{
-    Resposta(Usuario usuario, String texto,Votacao votacao, ArrayList<Resposta> respostas) {
-        this.usuario = usuario;
-        this.texto = texto;
+public class Resposta implements Post{
+    private final Postagem postagem = new Postagem();
+
+    Resposta(Usuario usuario, String texto, Votacao votacao, ArrayList<Resposta> respostas) {
+        this.postagem.usuario = usuario;
+        this.postagem.texto = texto;
+
+        this.postagem.votacao = votacao;
+        this.postagem.respostas = respostas;
     }
 
     public static Resposta parseResposta(String resposta) {
@@ -30,17 +35,37 @@ public class Resposta extends Post{
 
     @Override
     public void vote(boolean vote) {
-        votacao.votar(vote, usuario);
+        this.postagem.votacao.votar(vote, this.postagem.usuario);
     }
 
     @Override
     public void novaResposta(Resposta resposta) {
         Main.respostas.add(resposta);
-        this.respostas.add(resposta);
+        this.postagem.respostas.add(resposta);
     }
 
     @Override
     public void editaTexto(String novoTexto) {
-        this.texto = novoTexto;
+        this.postagem.texto = novoTexto;
+    }
+
+    @Override
+    public Votacao getVotacao() {
+        return null;
+    }
+
+    @Override
+    public String getData() {
+        return null;
+    }
+
+    @Override
+    public String getTexto() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Resposta> getRespostas() {
+        return null;
     }
 }
