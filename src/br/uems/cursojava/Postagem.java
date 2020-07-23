@@ -12,5 +12,6 @@ class Postagem {
 
     public Postagem() {
         this.data = LocalDate.now().toString();
+        this.respostas = new ArrayList<>();
     }
 }
