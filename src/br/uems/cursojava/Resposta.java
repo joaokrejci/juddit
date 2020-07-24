@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static br.uems.cursojava.Main.usuarios;
 import static br.uems.cursojava.Main.votacoes;
 
-public class Resposta implements Post{
+public class Resposta implements Post {
     private final Postagem postagem = new Postagem();
 
     Resposta(Usuario usuario, String texto, Votacao votacao, ArrayList<Resposta> respostas) {

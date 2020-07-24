@@ -3,6 +3,8 @@ package br.uems.cursojava;
 
 import java.util.ArrayList;
 
+import static br.uems.cursojava.Main.usuarios;
+
 public class Pergunta implements Post {
     private final String titulo;
     private final Postagem postagem = new Postagem();
@@ -27,7 +29,7 @@ public class Pergunta implements Post {
     public static Pergunta parsePergunta(String pergunta) {
         String[] info = pergunta.split(",");
 
-        Usuario usuario = new Usuario(info[1], Long.parseLong(info[0]));
+        Usuario usuario = usuarios.get(Integer.parseInt(info[1]));
 
         Pergunta novaPergunta = new Pergunta(usuario, info[3], Integer.parseInt(info[4]), info[2]);
 
