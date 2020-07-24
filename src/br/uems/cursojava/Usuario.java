@@ -3,7 +3,7 @@ package br.uems.cursojava;
 public class Usuario {
     private final long ID;
     private String nome;
-    private static long contador = 0;
+    private static long contador = -1;
 
     //cada usuario tem ID diferente para poder ser detectado pelo codigo e poderem ter nomes iguais
     public Usuario(String nome) {
@@ -34,4 +34,10 @@ public class Usuario {
     public String getNome() {
         return this.nome;
     }
+
+    @Override
+    public String toString() {
+        return ID +", "+ nome;
+    }
 }
+
