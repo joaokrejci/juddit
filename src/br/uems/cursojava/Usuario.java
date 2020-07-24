@@ -1,6 +1,6 @@
 package br.uems.cursojava;
 
-public class Usuario {
+public class Usuario{
     private final long ID;
     private String nome;
     private static long contador = -1;
@@ -13,7 +13,7 @@ public class Usuario {
         ID = contador;
     }
 
-    public Usuario(String nome, long id) {
+    public Usuario(long id, String nome) {
         this.nome = nome;
 
         /*
@@ -21,6 +21,11 @@ public class Usuario {
         joga excecao. IMPLEMENTAR DEPOIS!
          */
         this.ID = id;
+    }
+
+    public static Usuario parseUsuario(String usuario){
+        String[] info = usuario.split(",");
+        return new Usuario(Integer.parseInt(info[0]),info[1]);
     }
 
     public long getID() {

@@ -1,44 +1,31 @@
 package br.uems.cursojava;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class Pesquisa {
-    Scanner input = new Scanner(System.in);
-    protected String keyWord;
+import static br.uems.cursojava.Main.perguntas;
 
-    public void setKeyWord(String keyWord) {
-        this.keyWord = keyWord;
+public class Pesquisa<E> {
+    public Pesquisa(String keyword, List<E> where) {
+        this.keyword = keyword;
+        this.collection = where;
     }
 
-    public String getKeyWord() {
-        return keyWord;
+    private String keyword;
+    private Collection<E> collection;
+    private List<E> results;
+
+    public void buscar(Filter<E, String> filter){
+        for(E element: collection){
+            if(filter.filter(element, keyword)){
+                results.add(element);
+            };
+        }
     }
 
-    
+    public List<E> getResults(){
+        return results;
+    }
 }
 
-/ALESSANDRA/
-    
-    
-    
-String busca = ""
-
-            int cout = 0;
-            for (Pergunta p : perguntas) {
-                if (p.getTitulo().contains(busca)) {
-                    cout++;
-                }
-            }
-            for (Pergunta p : perguntas) {
-                if (p.getTexto().contains(busca)) {
-                    cout++;
-                }
-            }
-
-            for (Pergunta p : perguntas) {
-                if (p.getRespostas().contains(busca)) {
-                    cout++;
-                }
-            }
-            System.out.println(cout + "resultados encontrados");
-        }
+/*ALESSANDRA*/
