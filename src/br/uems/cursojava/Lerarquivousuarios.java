@@ -3,7 +3,7 @@ package br.uems.cursojava;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+//Bruno
 public class Lerarquivousuarios {
     public static void Lerarquivosusuarios(String[] args) {
         File arq = new File("usuarios.txt");
